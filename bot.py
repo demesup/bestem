@@ -30,8 +30,8 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
 
     # Schedule messages at 5:40, 5:41, 5:42 Bucharest time
-    scheduler.add_job(send_checkin, "cron", hour=5, minute=40, timezone=BUCHAREST_TZ)
-    scheduler.add_job(send_opening, "cron", hour=5, minute=41, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_checkin, "cron", hour=5, minute=45, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_opening, "cron", hour=5, minute=43, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_giveaway, "cron", hour=5, minute=42, timezone=BUCHAREST_TZ)
 
     scheduler.start()
