@@ -1,10 +1,11 @@
+import os
 import discord
 from discord.ext import commands
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from datetime import datetime
 
-TOKEN = "YOUR_BOT_TOKEN"
-CHANNEL_ID = YOUR_CHANNEL_ID  # int
+# Read token and channel ID from environment variables
+TOKEN = os.getenv("TOKEN")
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))  # convert string to int
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -17,10 +18,10 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
     scheduler.start()
 
-    # Schedule starting 16:40 every minute for testing
-    scheduler.add_job(send_checkin, "cron", hour=4, minute="56-56")  # 16:40, 16:41, 16:42
-    scheduler.add_job(send_opening, "cron", hour=4, minute="58-58")  # 16:43, 16:44, 16:45
-    scheduler.add_job(send_giveaway, "cron", hour=4, minute="57-57")  # 16:46, 16:47, 16:48
+    # Schedule messages starting 5:05 AM, one per minute
+    scheduler.add_job(send_checkin, "cron", hour=5, minute=5)
+    scheduler.add_job(send_opening, "cron", hour=5, minute=6)
+    scheduler.add_job(send_giveaway, "cron", hour=5, minute=7)
 
 async def send_checkin():
     channel = bot.get_channel(CHANNEL_ID)
