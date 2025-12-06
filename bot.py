@@ -33,7 +33,7 @@ async def on_ready():
     
     scheduler.add_job(send_giveaway_start, "cron", hour=13, minute=10, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_fun_activities, "cron", hour=14, minute=0, timezone=BUCHAREST_TZ)
-    scheduler.add_job(send_lunch, "cron", hour=15, minute=0, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_lunch, "cron", hour=14, minute=33, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_giveaway_end, "cron", hour=17, minute=30, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_dinner, "cron", hour=20, minute=0, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_maze_game, "cron", hour=22, minute=45, timezone=BUCHAREST_TZ)
