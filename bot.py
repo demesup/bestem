@@ -19,7 +19,7 @@ async def on_ready():
     scheduler.start()
 
     # Schedule messages starting 5:05 AM, one per minute
-    scheduler.add_job(send_checkin, "cron", hour=5, minute=15)
+    scheduler.add_job(send_checkin, "cron", hour=5, minute=21)
     scheduler.add_job(send_opening, "cron", hour=5, minute=16)
     scheduler.add_job(send_giveaway, "cron", hour=5, minute=17)
 
