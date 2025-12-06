@@ -30,6 +30,13 @@ async def on_ready():
     # Schedule all messages according to the new timetable
     scheduler.add_job(send_checkin, "cron", hour=8, minute=0, timezone=BUCHAREST_TZ)
     scheduler.add_job(send_opening, "cron", hour=9, minute=30, timezone=BUCHAREST_TZ)
+    
+    scheduler.add_job(send_giveaway_start, "cron", hour=13, minute=0, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_fun_activities, "cron", hour=14, minute=0, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_lunch, "cron", hour=15, minute=0, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_giveaway_end, "cron", hour=17, minute=30, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_dinner, "cron", hour=20, minute=0, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_maze_game, "cron", hour=22, minute=45, timezone=BUCHAREST_TZ)
 
     scheduler.start()
     print("Scheduler started.")
@@ -53,16 +60,6 @@ async def send_opening():
         "so make sure to be on time ⌚"
     )
 
-async def send_giveaway_start():
-    channel = await bot.fetch_channel(CHANNEL_ID)
-    await channel.send(
-        "🎁 Giveaway 🎁@everyone\n\n"
-        "The giveaway started! To participate, you have to fulfill the following requirements:\n\n"
-        "💥 Follow @bestem.bucharest\n"
-        "⚡ Follow @cyberjump_bucuresti\n"
-        "🤳 Post a story and tag @bestem.bucharest\n\n"
-        "We have exciting prizes for the winners, so make sure to do it before 18:00!"
-    )
 
 async def send_fun_activities():
     channel = await bot.fetch_channel(CHANNEL_ID)
@@ -85,13 +82,24 @@ async def send_lunch():
         "If you have any dietary preferences (such as vegetarian), you can communicate them to the volunteers 🙂"
     )
 
+async def send_giveaway_start():
+    channel = await bot.fetch_channel(CHANNEL_ID)
+    await channel.send(
+        "🎁 Giveaway 🎁 @everyone\n\n"
+        "The giveaway started! To participate, you have to fulfill the following requirements:\n\n"
+        "💥 Follow @bestem.bucharest\n"
+        "⚡ Follow @mindarchitect.ro\n"
+        "🤳 Post a story and tag @bestem.bucharest\n\n"
+        "We have exciting prizes for the winners, so make sure to do it before 18:00!"
+    )
+
 async def send_giveaway_end():
     channel = await bot.fetch_channel(CHANNEL_ID)
     await channel.send(
         "🎁 Giveaway 🎁 @everyone\n\n"
         "The giveaway is almost over! You have 30 minutes left to complete the requirements:\n\n"
         "💥 Follow @bestem.bucharest\n"
-        "⚡ Follow @cyberjump_bucuresti\n"
+        "⚡ Follow @mindarchitect.ro\n"
         "🤳 Post a story and tag @bestem.bucharest\n\n"
         "🎁 Don’t miss out on your chance to win exciting prizes! Good luck!"
     )
