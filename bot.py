@@ -18,9 +18,9 @@ async def on_ready():
     scheduler.start()
 
     # Schedule starting 16:40 every minute for testing
-    scheduler.add_job(send_checkin, "cron", hour=16, minute="40-42")  # 16:40, 16:41, 16:42
-    scheduler.add_job(send_opening, "cron", hour=16, minute="43-45")  # 16:43, 16:44, 16:45
-    scheduler.add_job(send_giveaway, "cron", hour=16, minute="46-48")  # 16:46, 16:47, 16:48
+    scheduler.add_job(send_checkin, "cron", hour=4, minute="52-52")  # 16:40, 16:41, 16:42
+    scheduler.add_job(send_opening, "cron", hour=4, minute="53-53")  # 16:43, 16:44, 16:45
+    scheduler.add_job(send_giveaway, "cron", hour=4, minute="55-55")  # 16:46, 16:47, 16:48
 
 async def send_checkin():
     channel = bot.get_channel(CHANNEL_ID)
