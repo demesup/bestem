@@ -19,9 +19,9 @@ async def on_ready():
     scheduler.start()
 
     # Schedule messages starting 5:05 AM, one per minute
-    scheduler.add_job(send_checkin, "cron", hour=5, minute=26)
-    scheduler.add_job(send_opening, "cron", hour=5, minute=25)
-    scheduler.add_job(send_giveaway, "cron", hour=5, minute=27)
+    scheduler.add_job(send_checkin, "cron", hour=5, minute=33)
+    scheduler.add_job(send_opening, "cron", hour=5, minute=34)
+    scheduler.add_job(send_giveaway, "cron", hour=5, minute=35)
 
 async def send_checkin():
     channel = bot.get_channel(CHANNEL_ID)
