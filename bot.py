@@ -30,9 +30,9 @@ async def on_ready():
     print(f"Logged in as {bot.user}")
 
     # Schedule messages at 5:40, 5:41, 5:42 Bucharest time
-    scheduler.add_job(send_checkin, "cron", hour=5, minute=51, timezone=BUCHAREST_TZ)
-    scheduler.add_job(send_opening, "cron", hour=5, minute=53, timezone=BUCHAREST_TZ)
-    scheduler.add_job(send_giveaway, "cron", hour=5, minute=52, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_checkin, "cron", hour=6, minute=51, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_opening, "cron", hour=6, minute=53, timezone=BUCHAREST_TZ)
+    scheduler.add_job(send_giveaway, "cron", hour=6, minute=52, timezone=BUCHAREST_TZ)
 
     scheduler.start()
     print("Scheduler started.")
@@ -40,7 +40,7 @@ async def on_ready():
 async def send_checkin():
     channel = await bot.fetch_channel(CHANNEL_ID)
     await channel.send(
-        "💻 **CHECK-IN** 💻\n\n"
+        "💻 **CHECK-IN** 💻@everyone \n\n"
         "Good morning! Don’t forget that check-in starts at **9:00**! "
         "You'll receive a welcome pack that includes the badge, where you have the schedule of the event. "
         "Please arrive on time to avoid large crowds ☕"
@@ -49,7 +49,7 @@ async def send_checkin():
 async def send_opening():
     channel = await bot.fetch_channel(CHANNEL_ID)
     await channel.send(
-        "⚡ **Official opening** ⚡\n\n"
+        "@everyone ⚡ **Official opening** ⚡\n\n"
         "The official opening starts in **30 minutes** and it will take place in **AN010**. "
         "Our partners will present their companies, and it’s a good opportunity to ask questions and network 💥\n\n"
         "Then, our main sponsor, **HazelHeartwood**, will tell you everything you need to know about the main challenge, "
@@ -64,7 +64,7 @@ async def send_giveaway():
         "💥 Follow **@bestem.bucharest**\n"
         "⚡ Follow **@cyberjump_bucuresti**\n"
         "🤳 Post a story and tag **@bestem.bucharest**\n\n"
-        "We have exciting prizes for the winners, so make sure to do it before **18:00**!"
+        "We have exciting prizes for the winners, so make sure to do it before **18:00**!\n@everyone"
     )
 
 bot.run(TOKEN)
